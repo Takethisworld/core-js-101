@@ -18,8 +18,8 @@
  *   'aa',''    => 'aa'
  *   '',  'bb'  => 'bb'
  */
-function concatenateStrings( value1, value2 ) {
-   return `${value1}${value2}`
+function concatenateStrings(value1, value2) {
+  return `${value1}${value2}`;
 }
 
 
@@ -34,9 +34,9 @@ function concatenateStrings( value1, value2 ) {
  *   'b'     => 1
  *   ''      => 0
  */
-function getStringLength( value ) {
-  let stringLength =value.length
-  return stringLength
+function getStringLength(value) {
+  const stringLength = value.length;
+  return stringLength;
 }
 
 /**
@@ -52,9 +52,9 @@ function getStringLength( value ) {
  *   'John','Doe'      => 'Hello, John Doe!'
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(firstName, lastName ) {
-  let greetingString = `Hello, ${firstName} ${lastName}!`
-  return greetingString
+function getStringFromTemplate(firstName, lastName) {
+  const greetingString = `Hello, ${firstName} ${lastName}!`;
+  return greetingString;
 }
 
 /**
@@ -67,9 +67,8 @@ function getStringFromTemplate(firstName, lastName ) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate( value ) {
-  let extractName = value.indexOf['Hello,']
-  return extractName
+function extractNameFromTemplate(value) {
+  return value.split(', ').pop().slice(0, -1);
 }
 
 
@@ -83,9 +82,8 @@ function extractNameFromTemplate( value ) {
  *   'John Doe'  => 'J'
  *   'cat'       => 'c'
  */
-function getFirstChar( value ) {
-  let getFirst = value.slice(1)
-  return getFirst
+function getFirstChar(value) {
+  return value.slice(0, 1);
 }
 
 /**
@@ -99,8 +97,8 @@ function getFirstChar( value ) {
  *   'cat'              => 'cat'
  *   '\tHello, World! ' => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces( value ) {
-    return value.trim()
+function removeLeadingAndTrailingWhitespaces(value) {
+  return value.trim();
 }
 
 /**
@@ -114,11 +112,11 @@ function removeLeadingAndTrailingWhitespaces( value ) {
  *   'A', 5  => 'AAAAA'
  *   'cat', 3 => 'catcatcat'
  */
-function repeatString( value, count ) {
-  const result =[]
-  result.length=count
-  result.fill(value)
-  return result('join')
+function repeatString(value, count) {
+  const result = [];
+  result.length = count;
+  result.fill(value);
+  return result.join('');
 }
 
 /**
@@ -133,8 +131,9 @@ function repeatString( value, count ) {
  *   'I like legends', 'end' => 'I like legs',
  *   'ABABAB','BA' => 'ABAB'
  */
-function removeFirstOccurrences( str, value ) {
-  return str.replace(value,'')
+function removeFirstOccurrences(str, value) {
+  const idx = str.indexOf(value);
+  return str.slice(0, idx) + str.slice(idx + value.length, str.length);
 }
 
 /**
@@ -148,8 +147,8 @@ function removeFirstOccurrences( str, value ) {
  *   '<span>' => 'span'
  *   '<a>' => 'a'
  */
-function unbracketTag( str ) {
-  return str.substring(1, str.length-2)
+function unbracketTag(str) {
+  return str.substring(1, str.length - 1);
 }
 
 
@@ -163,8 +162,8 @@ function unbracketTag( str ) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
-function convertToUpperCase( str ) {
-  return str.toUpperCase()
+function convertToUpperCase(str) {
+  return str.toUpperCase();
 }
 
 /**
@@ -182,8 +181,8 @@ function convertToUpperCase( str ) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails( str ) {
-  return str.split(';')
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
@@ -209,12 +208,12 @@ function extractEmails( str ) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString( width, height ) {
-  const lineHeight='-';
-  const lineWidth='-';
-  const spaceSymb=' ';
-   const tl=`┌${lineHeight.repeat(width-2)}┐\n`
-    const ml = `│${spaceSymb.repeat(width - 2)}│\n`;
+function getRectangleString(width, height) {
+  const lineHeight = '─';
+  const lineWidth = '─';
+  const spaceSymb = ' ';
+  const tl = `┌${lineHeight.repeat(width - 2)}┐\n`;
+  const ml = `│${spaceSymb.repeat(width - 2)}│\n`;
   const dl = `└${lineWidth.repeat(width - 2)}┘\n`;
   return `${tl}${ml.repeat(height - 2)}${dl}`;
 }
@@ -236,12 +235,12 @@ function getRectangleString( width, height ) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13( str ) {
-  const firstString='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  const secondString ='NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+function encodeToRot13(str) {
+  const firstString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const secondString = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
 
-  const index =(x)=> firstString.indexOf(x)
-  const translate =(x)=>(index(x)> -1 ? secondString[index(x)] :1);
+  const index = (x) => firstString.indexOf(x);
+  const translate = (x) => (index(x) > -1 ? secondString[index(x)] : 1);
   return str.split('').map(translate).join('');
 }
 
@@ -258,8 +257,8 @@ function encodeToRot13( str ) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString( value ) {
-  return Object.prototype.toString.call(value)===['object String']
+function isString(value) {
+  return Object.prototype.toString.call(value) === '[object String]';
 }
 
 
@@ -287,10 +286,10 @@ function isString( value ) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId( value ) {
+function getCardId(value) {
   const string = 'A♣,2♣,3♣,4♣,5♣,6♣,7♣,8♣,9♣,10♣,J♣,Q♣,K♣,A♦,2♦,3♦,4♦,5♦,6♦,7♦,8♦,9♦,10♦,J♦,Q♦,K♦,A♥,2♥,3♥,4♥,5♥,6♥,7♥,8♥,9♥,10♥,J♥,Q♥,K♥,A♠,2♠,3♠,4♠,5♠,6♠,7♠,8♠,9♠,10♠,J♠,Q♠,K♠';
-  const arr=string.split(',');
-  return arr.indexOf(value)
+  const arr = string.split(',');
+  return arr.indexOf(value);
 }
 
 
